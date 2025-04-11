@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <!-- metadados -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Futurista</title>
+
+    <!-- stylesheets -->
+    <link rel="stylesheet" href="src/stylesheets/reset.css">
+    <link rel="stylesheet" href="src/stylesheets/preset.css">
+    <link rel="stylesheet" href="src/stylesheets/main.css">
+    <link rel="stylesheet" href="src/stylesheets/sidebar.css">
+    <link rel="stylesheet" href="src/stylesheets/footer.css">
+    <link rel="stylesheet" href="src/stylesheets/responsive.css">
+
+</head>
+
+<body>
+    <h1>Calculadora Futurista</h1>
+
+    <main id="calculadora">
+        <section id="visor">
+            <h2 id="resultado">0</h2>
+            <h3 id="digitado"></h3>
+        </section>
+
+        <section id="teclado">
+            <div class="bloco-de-botoes" id="acoes">
+                <button class="btn-acao" id="btn-acao1"></button>
+                <button class="btn-acao" id="btn-acao2"></button>
+                <button class="btn-acao" id="btn-acao3"></button>
+                <button class="btn-acao" id="btn-acao4"></button>
+                <button class="btn-acao" id="btn-acao5"></button>
+            </div>
+
+            <div class="bloco-de-botoes" id="numeros">
+                <button class="btn-numero" id="btn-numero-1">1</button>
+                <button class="btn-numero" id="btn-numero-2">2</button>
+                <button class="btn-numero" id="btn-numero-3">3</button>
+                <button class="btn-numero" id="btn-numero-4">4</button>
+                <button class="btn-numero" id="btn-numero-5">5</button>
+                <button class="btn-numero" id="btn-numero-6">6</button>
+                <button class="btn-numero" id="btn-numero-7">7</button>
+                <button class="btn-numero" id="btn-numero-8">8</button>
+                <button class="btn-numero" id="btn-numero-9">9</button>
+            </div>
+            
+            <div class="bloco-de-botoes" id="operacoes">
+                <button class="btn-operacao" id="btn-operacao-1">+</button>
+                <button class="btn-operacao" id="btn-operacao-2">-</button>
+                <button class="btn-operacao" id="btn-operacao-3">*</button>
+                <button class="btn-operacao" id="btn-operacao-4">/</button>
+                <button class="btn-operacao" id="btn-operacao-5">%</button>
+                <button class="btn-operacao" id="btn-operacao-6">=</button>
+                <button class="btn-operacao" id="btn-operacao-7">potencia</button>
+                <button class="btn-operacao" id="btn-operacao-8">raiz</button>
+                <button class="btn-operacao" id="btn-operacao-9">, numero quebrado</button>
+            </div>
+            
+        </section>
+    </main>
+
+    <aside id="sidebar">
+        <section id="temas">
+            <button id="btn-caixa-temas"></button>
+            <dialog id="caixa-temas">
+                <ul id="lista-temas" >
+                    <li><button class="btn-tema" id="btn-tema-1"></button></li>
+                    <li><button class="btn-tema" id="btn-tema-2"></button></li>
+                    <li><button class="btn-tema" id="btn-tema-3"></button></li>
+                    <li><button class="btn-tema" id="btn-tema-4"></button></li>
+                    <li><button class="btn-tema" id="btn-tema-5"></button></li>
+                    <li><button class="btn-tema" id="btn-tema-6"></button></li>
+                    <li><button class="btn-tema" id="btn-tema-7"></button></li>
+                </ul>
+            </dialog>
+        </section>
+
+        <section id="historico">
+            <button id="btn-caixa-historico"></button>
+
+            <dialog id="caixa-historico">
+                <ol id="lista-hitorico">
+                    <li>
+                        <p class="unidade-historico"></p>
+                    </li>
+                </ol>
+            </dialog>
+        </section>
+    </aside>
+</body>
+</html>
