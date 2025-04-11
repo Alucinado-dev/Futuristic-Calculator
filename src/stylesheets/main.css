@@ -1,0 +1,30 @@
+main{
+    padding: 2rem;
+    background-color: var(--main-color);
+    border: 5px solid black;
+    box-shadow: 0 5px -10px 20px black;
+    display: flex;
+    justify-content: space-between;
+    gap: 5rem;
+}
+
+#visor{
+    box-shadow: inset 0 5px 10px 10px black;
+}
+
+#teclado{
+    display: grid;
+    gap: 1rem;
+    grid-template-areas: 
+    'acoes acoes acoes acoes acoes'
+    'numeros numeros numeros numeros operacoes'
+    'numeros numeros numeros numeros operacoes'
+    'numeros numeros numeros numeros operacoes'
+    'numeros numeros numeros numeros operacoes'
+    'numeros numeros numeros numeros operacoes'
+    'numeros numeros numeros numeros operacoes'
+    'numeros numeros numeros numeros operacoes'
+    'numeros numeros numeros numeros operacoes'
+    'numeros numeros numeros numeros operacoes'
+    ;
+}

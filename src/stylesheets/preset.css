@@ -1,0 +1,88 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+body{
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    place-items: center;
+    gap: 10rem;
+    padding: 2rem 6rem;
+}
+
+
+
+
+
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~           TEMAS          ~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+[data-theme='cyberpunk'] {
+    --main-color: #E100FF;
+    --primary-color: #00F0FF;
+    --secondary-color: #FF2A6D;
+
+    --visor-font: 'Orbitron', sans-serif;
+    --buttons-font: 'Rajdhani', sans-serif;
+}
+
+
+[data-theme='steampunk'] {
+    --main-color: #B87333;
+    --primary-color: #5E2C04;
+    --secondary-color: #6B8E23;
+
+    --visor-font: 'Blackletter', sans-serif;
+    --buttons-font: 'Cinzel', sans-serif;
+}
+
+[data-theme='biopunk'] {
+    --main-color: #A1FF0A;
+    --primary-color: #8A2BE2;
+    --secondary-color: #000000;
+
+    --visor-font: 'Courier New', Courier, monospace;
+    --buttons-font: 'Rajdhani', sans-serif;
+}
+
+[data-theme='dieselpunk'] {
+    --main-color: #FFD700;
+    --primary-color: #8B0000;
+    --secondary-color: #4682B4;
+
+    --visor-font: 'Metropolis', Courier, monospace;
+    --buttons-font: 'Times New Roman', sans-serif;
+}
+
+[data-theme='solarpunk'] {
+    --main-color: #98FF98;
+    --primary-color: #40E0D0;
+    --secondary-color: #FFDE7D;
+
+    --visor-font: 'Montserrat', Courier, monospace;
+    --buttons-font: 'Quicksand', sans-serif;
+}
+
+[data-theme='nanopunk'] {
+    --main-color: #C0C0C0;
+    --primary-color: #0077FF;
+    --secondary-color: #000000;
+
+    --visor-font: 'Exo2', Courier, monospace;
+    --buttons-font: 'Share Tech mono', sans-serif;
+}
