@@ -25,23 +25,19 @@
 */
 
 /* funções js:
-    captura do proposito do botão
-    atualizar visor digitado
-    adiciona um digito ao que foi digitado no visor
-    armazena o operador para quando for fazer a operacao
-    operacoes
-    inverte o sinal do número
-    inserir ponto flutuante
-    garantir que só seja feita uma operação por cada vez exceto na comparação 
-    calcular
-    atualizar visor resultado
-    armazenar resultado no historico
-    preparar para novo calculo
-    converter para porcentagem
-    identificar e exibir erro
-    limpar o histórico
-    zerar valores do visor digitado
-    backspace no valor digitado
+    *captura do proposito do botão
+    *atualizar visor digitado
+    *adiciona um digito ao que foi digitado no visor
+    *armazena o operador para quando for fazer a operacao
+    *inverte o sinal do número
+    *inserir ponto flutuante
+    *calcular
+    *atualizar visor resultado
+    *armazenar resultado no historico
+    *identificar e exibir erro
+    *limpar o histórico
+    *zerar valores do visor digitado
+    *backspace no valor digitado
 
     aplicar tema
     salvar na memoria
@@ -53,7 +49,8 @@ const btnOperators = document.getElementsByClassName('operators');
 const btnNumbers = document.getElementsByClassName('numbers');
 let operator;
 
-
+const typed = document.getElementById('typed');
+const display = document.getElementById('display');
 
 btnActions.forEach(button => {
     button.addEventListener('click', () => {
