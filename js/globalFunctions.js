@@ -151,7 +151,6 @@ function showErrorMessage (dsplay){
 }
 
 function applyTheme(theme){
-    /* make data-theme vars work in all document */
     document.documentElement.setAttribute('data-theme', theme);
 }
 

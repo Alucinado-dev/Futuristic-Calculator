@@ -73,3 +73,5 @@ btnNumbers.forEach(button => {
         console.log(pressedButton);
     });
 });
+
+applyTheme(getSavedTheme() = 'cyberpunk')
