@@ -36,7 +36,7 @@ function appendPressedButtonToTyped(buttonContent){
 }
 
 function calculate(firstOperand, secondOperand, operator){
-    let result;
+    let result = null;
 
     if(operator === 'plus'){
         result = firstOperand + secondOperand;
@@ -64,14 +64,6 @@ function calculate(firstOperand, secondOperand, operator){
 
     if(operator === 'percent'){
         result = (firstOperand / 100) * secondOperand;
-    }
-    
-    if(operator === 'equal'){
-        if(firstOperand === secondOperand){
-            result = 'true';
-        } else {
-            result = 'false';
-        }
     }
 
     return result;
@@ -162,6 +154,7 @@ function makeAction(typed, result, action){
     
             if(action === 'enter'){
                 secondOperand = storeOperand(typed);
+                console.log(`Calculando: ${firstOperand} ${operator} ${secondOperand}`);
                 result.innerText = calculate(firstOperand, secondOperand, operator);
                 createUnityForHistory(typed, result);
                 firstOperand = storeOperand(result);

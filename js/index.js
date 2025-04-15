@@ -66,42 +66,31 @@ btnActions.forEach(button => {
 btnOperators.forEach(button => {
     button.addEventListener('click', () => {
         const currentOperator = storePressedButton(button, 'operator');
-        console.log(`Operador pressionado: ${currentOperator}`);
-
-        
         const currentOperand = storeOperand(typed);
-
-        
+/* 
         if(isNaN(currentOperand) && typed.innerText.length > 0) {
              console.error("Entrada inválida no visor:", typed.innerText);
              showErrorMessage(result);
              return; 
         }
-
-
-        
-        if(operator && firstOperand !== undefined) {
+         */
+        if(operator && firstOperand) {
             console.log(`Calculando: ${firstOperand} ${operator} ${currentOperand}`);
+            clearElement(typed); 
+            /* when another operator is clicked, the calculation gets done */
             secondOperand = currentOperand; 
             const intermediateResult = calculate(firstOperand, secondOperand, operator);
-
-            if (isNaN(intermediateResult)) {
-                showErrorMessage(result);
-                firstOperand = undefined;
-                operator = undefined;
-                clearElement(typed);
-            } else {
-                result.innerText = intermediateResult; 
-                firstOperand = intermediateResult; 
-                clearElement(typed); 
-                operator = currentOperator; 
-                console.log(`Resultado intermediário: ${firstOperand}, Próximo operador: ${operator}`);
-            }
+            result.innerText = intermediateResult; 
+            /* then, the result turns into the new first operand */
+            firstOperand = intermediateResult; 
+            operator = currentOperator; 
+            console.log(`Resultado intermediário: ${firstOperand}, Próximo operador: ${operator}`);
 
         } else {
             firstOperand = currentOperand;
-            clearElement(typed); 
             operator = currentOperator; 
+            clearElement(typed);
+            updateDisplay(firstOperand + operator, result);
             console.log(`Primeiro operando armazenado: ${firstOperand}, Operador definido: ${operator}`);
         }
     });
@@ -112,7 +101,7 @@ btnNumbers.forEach(button => {
     button.addEventListener('click', () => {
         pressedButton = storePressedButton(button, 'number');
         appendPressedButtonToTyped(pressedButton);
-        console.log(pressedButton);
+        console.log(`o nuúmero selecionado é ${pressedButton}`);
     });
 });
 
