@@ -32,41 +32,41 @@ function updateDisplay(value, whichDisplay){
 function appendPressedButtonToTyped(buttonContent){
     const typed = document.getElementById('typed');
     typed.innerText += buttonContent;
-    updateDisplay(typed.innerText);
+    updateDisplay(typed.innerText, typed);
 }
 
 function calculate(firstOperand, secondOperand, operator){
     let result;
 
-    if(operator === '+'){
+    if(operator === 'plus'){
         result = firstOperand + secondOperand;
     }
 
-    if(operator === '-'){
+    if(operator === 'minus'){
         result = firstOperand - secondOperand;
     }
 
-    if(operator === '*'){
+    if(operator === 'times'){
         result = firstOperand * secondOperand;
     }
 
-    if(operator === '/'){
+    if(operator === 'divide'){
         result = firstOperand / secondOperand;
     }
 
-    if(operator === '^'){
+    if(operator === 'power'){
         result = Math.pow(firstOperand, secondOperand);
     }
 
-    if(operator === '√'){
+    if(operator === 'sqrt'){
         result = Math.sqrt(firstOperand);
     }
 
-    if(operator === '%'){
+    if(operator === 'percent'){
         result = (firstOperand / 100) * secondOperand;
     }
     
-    if(operator === '='){
+    if(operator === 'equal'){
         if(firstOperand === secondOperand){
             result = 'true';
         } else {
@@ -97,16 +97,6 @@ function insertFloatingPoint (typed) {
     }
 }
 
-function isCalculationValid(typed, display){
-
-    if(typed.innerText.length > 0){
-        return true;
-    } else {
-        display.innerText = 'Erro';
-        return false;
-    }
-}
-
 
 function createUnityForHistory(typed, display){
     const unity =document.createElement('p');
@@ -122,20 +112,10 @@ function appendUnityToHistory(unity){
     newLi.appendChild(unity);
 }
 
-function clearHistory(){
-    const history = document.getElementById('history-list');
-    history.innerHTML = '';
+function clearElement(element){
+    element.innerText = '';
 }
 
-function clearTyped(){
-    const typed = document.getElementById('typed');
-    typed.innerText = '';
-}
-
-function clearDisplay(){
-    const display = document.getElementById('display');
-    display.innerText = '';
-}
 
 function backspace(typed){
     typed.innerText = typed.innerText.slice(0, -1);
@@ -160,4 +140,38 @@ function saveTheme(theme){
 
 function getSavedTheme(){
     return localStorage.getItem('theme');
+}
+
+function makeAction(typed, result, action){
+    try {
+        if(action){
+            if(action === 'clear'){
+                clearElement(typed);
+                clearElement(result);
+                const history = document.getElementById('history-list');
+                clearElement(history);
+            }
+    
+            if(action === 'reset'){
+                clearElement(typed);
+            }
+    
+            if(action === 'backspace'){
+                backspace(typed);
+            }
+    
+            if(action === 'enter'){
+                secondOperand = storeOperand(typed);
+                result.innerText = calculate(firstOperand, secondOperand, operator);
+                createUnityForHistory(typed, result);
+                firstOperand = storeOperand(result);
+                clearElement(typed);
+            }
+
+            updateDisplay(typed.innerText, typed);
+        }
+    } catch (error) {
+        console.log(error);
+        showErrorMessage(result);
+    }
 }

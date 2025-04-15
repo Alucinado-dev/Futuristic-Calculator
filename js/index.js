@@ -44,34 +44,78 @@
     recuperar tema salvo na memoria
 */
 
-const btnActions = document.getElementsByClassName('actions');
-const btnOperators = document.getElementsByClassName('operators');
-const btnNumbers = document.getElementsByClassName('numbers');
-let operator;
+applyTheme(getSavedTheme()) 
+
+const btnActions = document.querySelectorAll('.btn-action');
+const btnOperators = document.querySelectorAll('.btn-operator');
+const btnNumbers = document.querySelectorAll('.btn-number');
+let firstOperand, secondOperand,operator, pressedButton = null;
 
 const typed = document.getElementById('typed');
-const display = document.getElementById('display');
+const result = document.getElementById('result');
 
 btnActions.forEach(button => {
     button.addEventListener('click', () => {
-        let pressedButton = storePressedButton(button, 'action');
-        console.log(pressedButton);
+        pressedButton = storePressedButton(button, 'action');
+        console.log(`a ação tomada é ${pressedButton}`);
+        makeAction(typed, result, pressedButton);
     });
 });
+
 
 btnOperators.forEach(button => {
     button.addEventListener('click', () => {
-        let pressedButton = storePressedButton(button, 'operator');
-        operator = pressedButton;
-        console.log(pressedButton);
+        const currentOperator = storePressedButton(button, 'operator');
+        console.log(`Operador pressionado: ${currentOperator}`);
+
+        
+        const currentOperand = storeOperand(typed);
+
+        
+        if(isNaN(currentOperand) && typed.innerText.length > 0) {
+             console.error("Entrada inválida no visor:", typed.innerText);
+             showErrorMessage(result);
+             return; 
+        }
+
+
+        
+        if(operator && firstOperand !== undefined) {
+            console.log(`Calculando: ${firstOperand} ${operator} ${currentOperand}`);
+            secondOperand = currentOperand; 
+            const intermediateResult = calculate(firstOperand, secondOperand, operator);
+
+            if (isNaN(intermediateResult)) {
+                showErrorMessage(result);
+                firstOperand = undefined;
+                operator = undefined;
+                clearElement(typed);
+            } else {
+                result.innerText = intermediateResult; 
+                firstOperand = intermediateResult; 
+                clearElement(typed); 
+                operator = currentOperator; 
+                console.log(`Resultado intermediário: ${firstOperand}, Próximo operador: ${operator}`);
+            }
+
+        } else {
+            firstOperand = currentOperand;
+            clearElement(typed); 
+            operator = currentOperator; 
+            console.log(`Primeiro operando armazenado: ${firstOperand}, Operador definido: ${operator}`);
+        }
     });
 });
+
 
 btnNumbers.forEach(button => {
     button.addEventListener('click', () => {
-        let pressedButton = storePressedButton(button, 'number');
+        pressedButton = storePressedButton(button, 'number');
+        appendPressedButtonToTyped(pressedButton);
         console.log(pressedButton);
     });
 });
 
-applyTheme(getSavedTheme() = 'cyberpunk')
+
+
+
