@@ -12,16 +12,27 @@ function storePressedButton(button, buttonClass){
     return stored;
 }
 
-function storeOperand(typed){
+function storeOperand(display){
     let operand;
 
+    const textValue = display.innerText.replace(',', '.');
     try {
-        operand = parseFloat(typed.innerText);
-    } catch (error) {
-        console.log(error);
-        operand = 0;
-    }
+        if (textValue === '') {
+            operand = null; 
+        } else {
+            operand = parseFloat(textValue);
+        }
 
+        if (isNaN(operand)) {
+           console.error(`Falha no parsing da entrada: "${textValue}"`);
+           return NaN;
+        }
+    } catch (error) {
+        console.log(`Erro ao fazer parsing do operando: ${error}`);
+        return NaN; 
+    }
+    
+    console.log(`o operando armazenado (string: "${display.innerText}", parsed: ${operand})`);
     return operand;
 }
 
@@ -78,22 +89,30 @@ function numberSignalInverter(number){
 }
 
 function insertFloatingPoint (typed) {
-
     try {
-        if(!typed.innerText.includes(',')){
-            typed.innerText += ',';
+        if(!typed.innerText.includes('.')){
+
+            if(typed.innerText === '') {
+                typed.innerText = '0.';
+            } else {
+                typed.innerText += '.';
+            }
         }
-        updateDisplay(typed.innerText);
+
+        updateDisplay(typed.innerText, typed);
     } catch (error) {
         console.log(error);
     }
 }
 
-
-function createUnityForHistory(typed, display){
-    const unity =document.createElement('p');
-    unity.innerText = `${typed.innerText} = ${display.innerText}`;
-    appendUnityToHistory(unity);
+function createUnityForHistory(first, op, second, resultValue){
+    const unity = document.createElement('p');
+    const opSymbol = {
+        plus: '+', minus: '-', times: '*', divide: '/',
+        power: '^', sqrt: '√', percent: '%'
+    }
+    unity.innerText = `${first.innerText} ${opSymbol[op]} ${second} = ${resultValue}`;
+    appendUnityToHistory(unity);   
 }
 
 function appendUnityToHistory(unity){
@@ -114,11 +133,11 @@ function backspace(typed){
     updateDisplay(typed.innerText, typed);
 }
 
-function showErrorMessage (dsplay){
-    dsplay.innerText = 'Erro';
+function showErrorMessage (display, errorMessage = 'Ocorreu um erro desconecido'){
+    display.innerText = `Erro: ${errorMessage}`;
 
     setTimeout(() => {
-        dsplay.innerText = '';
+        display.innerText = '';
     }, 2000);
 }
 
@@ -134,37 +153,69 @@ function getSavedTheme(){
     return localStorage.getItem('theme');
 }
 
-function makeAction(typed, result, action){
+function makeAction(typed, result, action, currentState) {
+    let state = { ...currentState }; /* Cria uma cópia para evitar mutação direta do objeto original */ 
+    
     try {
-        if(action){
-            if(action === 'clear'){
-                clearElement(typed);
-                clearElement(result);
-                const history = document.getElementById('history-list');
-                clearElement(history);
-            }
+        if(action === 'clear'){
+            clearElement(typed);
+            clearElement(result);
+            const history = document.getElementById('history-list');
+            clearElement(history);
+  
+            state.firstOperand = null;
+            state.operator = null;
+            state.secondOperand = null; 
+            console.log(`Estado resetado pelo Clear: ${state}`);
+        }
     
-            if(action === 'reset'){
-                clearElement(typed);
-            }
+        if(action === 'reset'){ 
+            clearElement(typed);
+        }
     
-            if(action === 'backspace'){
-                backspace(typed);
-            }
+        if(action === 'backspace'){
+            backspace(typed); 
+        }
     
-            if(action === 'enter'){
-                secondOperand = storeOperand(typed);
-                console.log(`Calculando: ${firstOperand} ${operator} ${secondOperand}`);
-                result.innerText = calculate(firstOperand, secondOperand, operator);
-                createUnityForHistory(typed, result);
-                firstOperand = storeOperand(result);
-                clearElement(typed);
-            }
+        if(action === 'enter'){
 
-            updateDisplay(typed.innerText, typed);
+            if (state.firstOperand !== null && state.operator !== null && typed.innerText !== '') {
+                const secondOperandText = typed.innerText; /* stores the second operand in string type to the history */
+                state.secondOperand = storeOperand(typed); 
+    
+                if (isNaN(state.secondOperand)) {
+                    showErrorMessage(result);
+                    return currentState; 
+                }
+    
+                console.log(`Calculando: ${state.firstOperand} ${state.operator} ${state.secondOperand}`);
+                const calculationResult = calculate(state.firstOperand, state.secondOperand, state.operator);
+    
+                if (!isFinite(calculationResult) || isNaN(calculationResult)) {
+                     showErrorMessage(result);
+                        state = { firstOperand: null, operator: null, secondOperand: null };
+                        clearElement(typed);
+                } else {
+                    updateDisplay(calculationResult, result);
+                    createUnityForHistory(state.firstOperand, state.operator, secondOperandText, calculationResult);
+                    
+                    /* prepares for the next operation */
+                    state.firstOperand = calculationResult;
+                    clearElement(typed); 
+                    state.operator = null; 
+                    state.secondOperand = null; 
+                    console.log("Estado após Enter:", state);
+                }
+            } else {
+                console.log("Enter pressionado sem operação completa pronta.");
+            }
         }
     } catch (error) {
-        console.log(error);
+        console.log("Erro em makeAction:", error);
         showErrorMessage(result);
+        state = { firstOperand: null, operator: null, secondOperand: null };
+        clearElement(typed);
+        clearElement(result);
     }
+    return state; 
 }
