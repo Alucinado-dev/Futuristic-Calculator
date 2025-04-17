@@ -77,7 +77,7 @@ function calculate(firstOperand, secondOperand, operator){
         result = (firstOperand / 100) * secondOperand;
     }
 
-    return result;
+    return Number(result).toFixed(4);
 }
 
 function numberSignalInverter(number){
