@@ -50,6 +50,8 @@ const btnOperators = document.querySelectorAll('.btn-operator');
 const btnNumbers = document.querySelectorAll('.btn-number');
 const btnFloat = document.getElementById('float');
 const btnInvert = document.getElementById('invert');
+const btnRoot = document.getElementById('sqrt');
+
 
 let calculatorState = {
     firstOperand: null,
@@ -157,7 +159,19 @@ btnInvert.addEventListener('click', () => {
         const invertedNumber = numberSignalInverter(currentNumber);
         updateDisplay(invertedNumber, typed);
     }
-});     /* TODO ajeitar logica da raiz e da inversão para funcionar assim que o botão é apertado, sem precisar de um segundo operando */
+});   
+
+btnRoot.addEventListener('click', () => {
+    if(typed.innerText !== ''){
+        const currentNumber = storeOperand(typed);
+        const root = calculate(currentNumber, null, 'sqrt');
+        if(isNaN(root)){
+            showErrorMessage(result, 'não é possível calcular a raiz de um número negativo');
+        } else {
+            updateDisplay(root, typed);
+        }
+    }
+});
 
 
 
