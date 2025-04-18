@@ -21,8 +21,17 @@ body{
     display: flex;
     flex-direction: column;
     place-items: center;
-    gap: 10rem;
+    gap: 5rem;
     padding: 2rem 6rem;
+}
+
+h1{
+    font-size: 4rem;
+    font-weight: 900;
+    text-align: center;
+    font-family: var(--title-font);
+    color: var(--primary-color);
+    text-shadow: 0 0 10px var(--secondary-color);
 }
 
 aside{
@@ -63,7 +72,8 @@ dialog{
     --primary-color: #00F0FF;
     --secondary-color: #FF2A6D;
 
-    --visor-font: 'Orbitron', sans-serif;
+    --title-font: 'Oxanium', sans-serif;
+    --display-font: 'Orbitron', sans-serif;
     --buttons-font: 'Rajdhani', sans-serif;
 }
 
@@ -73,7 +83,7 @@ dialog{
     --primary-color: #5E2C04;
     --secondary-color: #6B8E23;
 
-    --visor-font: 'Blackletter', sans-serif;
+    --display-font: 'Blackletter', sans-serif;
     --buttons-font: 'Cinzel', sans-serif;
 }
 
@@ -82,7 +92,7 @@ dialog{
     --primary-color: #8A2BE2;
     --secondary-color: #000000;
 
-    --visor-font: 'Courier New', Courier, monospace;
+    --display-font: 'Courier New', Courier, monospace;
     --buttons-font: 'Rajdhani', sans-serif;
 }
 
@@ -91,7 +101,7 @@ dialog{
     --primary-color: #8B0000;
     --secondary-color: #4682B4;
 
-    --visor-font: 'Metropolis', Courier, monospace;
+    --display-font: 'Metropolis', Courier, monospace;
     --buttons-font: 'Times New Roman', sans-serif;
 }
 
@@ -100,7 +110,7 @@ dialog{
     --primary-color: #40E0D0;
     --secondary-color: #FFDE7D;
 
-    --visor-font: 'Montserrat', Courier, monospace;
+    --display-font: 'Montserrat', Courier, monospace;
     --buttons-font: 'Quicksand', sans-serif;
 }
 
@@ -109,6 +119,6 @@ dialog{
     --primary-color: #0077FF;
     --secondary-color: #000000;
 
-    --visor-font: 'Exo2', Courier, monospace;
+    --display-font: 'Exo2', Courier, monospace;
     --buttons-font: 'Share Tech mono', sans-serif;
 }
