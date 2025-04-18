@@ -43,7 +43,35 @@
     *recuperar tema salvo na memoria
 */
 
-applyTheme(getSavedTheme()) 
+
+/* ~~~~~~   	theme actions       ~~~~~~ */
+applyTheme(getSavedTheme());
+const btnBoxThemes = document.getElementById('btn-box-themes');
+const boxThemes = document.getElementById('box-themes');
+const btnThemes = document.querySelectorAll('.btn-theme');
+
+btnBoxThemes.addEventListener('click', () => {
+    boxThemes.classList.toggle('active');
+});
+
+btnThemes.forEach(button => {
+    button.addEventListener('click', () => {
+        btnThemes.forEach(btn => btn.classList.remove('active'));
+        
+        button.classList.add('active');
+
+        const selectedTheme = button.id;
+        applyTheme(selectedTheme);
+        saveTheme(selectedTheme);
+
+        boxThemes.classList.remove('active');
+    });
+})
+
+
+ 
+
+/* ~~~~~~       calculator actions      ~~~~~~ */
 
 const btnActions = document.querySelectorAll('.btn-action');
 const btnOperators = document.querySelectorAll('.btn-operator');
@@ -90,10 +118,14 @@ btnOperators.forEach(button => {
         }
 
         /* case 1: chained operations (5+3-1)  */
-        /* need a firstOperand stored, a pending operator, and a new number typed (currentOperand)*/
+        /* requires a firstOperand stored, a pending operator, and a new number typed (currentOperand)*/
+
         if (calculatorState.operator && calculatorState.firstOperand !== null && currentOperand !== null) {
             console.log(`Encadeando: Calculando ${calculatorState.firstOperand} ${calculatorState.operator} ${currentOperand}`);
             const intermediateResult = calculate(calculatorState.firstOperand, currentOperand, calculatorState.operator);
+
+            /* calling the create unity for history  here to contemplate the case when the operations are chained */
+            createUnityForHistory(calculatorState.firstOperand, calculatorState.operator, currentOperand, intermediateResult);
 
             if (!isFinite(intermediateResult) || isNaN(intermediateResult)) {
                 showErrorMessage(result, 'o resultado da operação é inválido.');
@@ -106,13 +138,14 @@ btnOperators.forEach(button => {
                 updateDisplay(intermediateResult, result); 
                 calculatorState.firstOperand = intermediateResult; 
                 calculatorState.operator = currentOperator; 
-                clearElement(typed); 
+                clearElement(typed);
                 console.log(`Resultado intermediário: ${calculatorState.firstOperand}, Próximo operador: ${calculatorState.operator}`);
             }
         }
 
         /* Case 2: first operator pressed, or change in the operator after first operand */ 
         /* requires a valid number*/
+
         else if (currentOperand !== null) {
             calculatorState.firstOperand = currentOperand;
             calculatorState.operator = currentOperator;
@@ -123,6 +156,7 @@ btnOperators.forEach(button => {
 
         /* Case 3: operator pressed after another operator  */
         /* requires a valid firstOperand */
+
         else if (calculatorState.firstOperand !== null) {
              calculatorState.operator = currentOperator; 
              console.log(`Operador alterado para: ${calculatorState.operator}`);
@@ -131,6 +165,7 @@ btnOperators.forEach(button => {
         }
         
         /* last case:  operator pressed with no firstOperand */
+
         else {
             console.log("Operador pressionado sem um número precedente válido.");
             showErrorMessage(result, 'digite um número antes de selecionar um operador');
@@ -174,5 +209,12 @@ btnRoot.addEventListener('click', () => {
 });
 
 
+/* ~~~~~~   	history actions       ~~~~~~ */
 
+const btnHistory = document.getElementById('btn-box-history');
+const boxHistory = document.getElementById('box-history');
+
+btnHistory.addEventListener('click', () => {
+    boxHistory.classList.toggle('active');
+});
 

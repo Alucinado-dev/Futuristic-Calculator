@@ -25,6 +25,13 @@ body{
     padding: 2rem 6rem;
 }
 
+aside{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
 
 button{
     padding: 1rem;
@@ -48,6 +55,7 @@ button{
 dialog{
     display: none;
 }
+
 /* ~~~~~~~~~~~~~~~~~~~~~~~~           TEMAS          ~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 [data-theme='cyberpunk'] {

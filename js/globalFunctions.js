@@ -77,7 +77,12 @@ function calculate(firstOperand, secondOperand, operator){
         result = (firstOperand / 100) * secondOperand;
     }
 
-    return Number(result).toFixed(4);
+    if (Number.isInteger(result)) {
+        return Number(result);
+    } else{
+        return Number(result).toFixed(4);
+    }
+    
 }
 
 function numberSignalInverter(number){
@@ -111,7 +116,7 @@ function createUnityForHistory(first, op, second, resultValue){
         plus: '+', minus: '-', times: '*', divide: '/',
         power: '^', sqrt: '√', percent: '%'
     }
-    unity.innerText = `${first.innerText} ${opSymbol[op]} ${second} = ${resultValue}`;
+    unity.innerText = `${first} ${opSymbol[op]} ${second} = ${resultValue}`;
     appendUnityToHistory(unity);   
 }
 
@@ -139,18 +144,6 @@ function showErrorMessage (display, errorMessage = 'Ocorreu um erro desconecido'
     setTimeout(() => {
         display.innerText = '';
     }, 2000);
-}
-
-function applyTheme(theme){
-    document.documentElement.setAttribute('data-theme', theme);
-}
-
-function saveTheme(theme){
-    localStorage.setItem('theme', theme);
-}
-
-function getSavedTheme(){
-    return localStorage.getItem('theme');
 }
 
 function makeAction(typed, result, action, currentState) {
@@ -218,4 +211,16 @@ function makeAction(typed, result, action, currentState) {
         clearElement(result);
     }
     return state; 
+}
+
+function applyTheme(theme){
+    document.documentElement.setAttribute('data-theme', theme);
+}
+
+function saveTheme(theme){
+    localStorage.setItem('theme', theme);
+}
+
+function getSavedTheme(){
+    return localStorage.getItem('theme') || 'cyberpunk'; /* cyberpunk defined as the default theme */
 }

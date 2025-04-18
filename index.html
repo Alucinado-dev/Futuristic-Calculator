@@ -66,34 +66,43 @@
         </section>
     </main>
 
-    <aside id="sidebar">
-        <section id="temas">
-            <button id="btn-caixa-temas"></button>
-            <dialog id="caixa-temas">
-                <ul id="lista-temas" >
-                    <li><button class="btn-tema" id="btn-tema-1"></button></li>
-                    <li><button class="btn-tema" id="btn-tema-2"></button></li>
-                    <li><button class="btn-tema" id="btn-tema-3"></button></li>
-                    <li><button class="btn-tema" id="btn-tema-4"></button></li>
-                    <li><button class="btn-tema" id="btn-tema-5"></button></li>
-                    <li><button class="btn-tema" id="btn-tema-6"></button></li>
-                    <li><button class="btn-tema" id="btn-tema-7"></button></li>
-                </ul>
-            </dialog>
-        </section>
+    <aside id="sidebar-theme">
+        <button id="btn-box-themes">Select a theme</button>
 
-        <section id="historico">
-            <button id="btn-caixa-historico"></button>
-
-            <dialog id="caixa-historico">
-                <ol id="history-list">
-                    <li>
-                        <p class="unidade-historico"></p>
-                    </li>
-                </ol>
-            </dialog>
-        </section>
+        <dialog id="box-themes">
+            <ul id="themes-list" >
+                <li><button class="btn-theme" id="cyberpunk">cyberpunk</button></li>
+                <li><button class="btn-theme" id="btn-theme-2"></button></li>
+                <li><button class="btn-theme" id="btn-theme-3"></button></li>
+                <li><button class="btn-theme" id="btn-theme-4"></button></li>
+                <li><button class="btn-theme" id="btn-theme-5"></button></li>
+                <li><button class="btn-theme" id="btn-theme-6"></button></li>
+                <li><button class="btn-theme" id="btn-theme-7"></button></li>
+            </ul>
+        </dialog>
     </aside>
+
+    <aside id="sidebar-history">
+        <button id="btn-box-history">View History</button>
+
+        <dialog id="box-history">
+            <ol id="history-list">
+                <li>
+                    <p class="history-element">2+2=5</p>
+                </li>
+            </ol>
+        </dialog>
+    </aside>
+
+    <footer>
+        <div class="developed-by">
+            <p id="dev-by"> 
+                Developed with 💜 by 
+            </p>
+            <a href="https://alucinado-dev.vercel.app" target="_blank" rel="noopener noreferrer"></a>                
+            <img src="src/assets/ALucin4do-logo.png" alt="logo of ALucin4do">
+        </div>
+    </footer>
 
     <!-- scripts -->
     <script src="js/globalFunctions.js"></script>
