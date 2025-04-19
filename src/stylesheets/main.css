@@ -11,7 +11,7 @@ main{
 
 #display{
 /* make it looks like a calculator display */
-    background-color: white;
+    background-color: var(--primary-color);
     color: black;
     padding: 1rem;
     border-radius: 10px;
@@ -30,7 +30,11 @@ main{
     grid-template-areas: 
     ' actions actions actions actions'
     ' numbers numbers numbers operators'
-    ' operators2 operators2 operators2 operators2'
+    ' numbers numbers numbers operators'
+    ' numbers numbers numbers operators'
+    ' numbers numbers numbers operators'
+    ' operators2 operators2 operators2 operators'
+    ' operators2 operators2 operators2 operators'
     ;
 }
 
