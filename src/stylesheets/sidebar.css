@@ -9,12 +9,11 @@
 }
 
 #sidebar-theme #btn-box-themes{
-    background-color: var(--main-color);
-    box-shadow: 0 0 3px var(--main-color);
+    background-color: var(--page-buttons);
+    box-shadow: 0 0 3px var(--page-buttons);
     
     &:hover, &:focus{
-        box-shadow: 0 0 10px var(--main-color);
-        
+        box-shadow: 0 0 10px var(--page-buttons);
     }
 }
 
@@ -58,12 +57,11 @@
 }
 
 #sidebar-history #btn-box-history{
-    background-color: var(--main-color);
-    box-shadow: 0 0 3px var(--main-color);
+    background-color: var(--page-buttons);
+    box-shadow: 0 0 3px var(--page-buttons);
     
     &:hover, &:focus{
-        box-shadow: 0 0 10px var(--main-color);
-        
+        box-shadow: 0 0 10px var(--page-buttons);
     }
 }
 

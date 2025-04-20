@@ -1,6 +1,6 @@
 main{
     padding: 2rem;
-    background-color: var(--main-color);
+    background-color: var(--calculator-color);
     box-shadow: -3px 5px 10px 5px black;
     display: flex;
     flex-direction: column;
@@ -10,9 +10,8 @@ main{
 }
 
 #display{
-/* make it looks like a calculator display */
-    background-color: var(--primary-color);
-    color: black;
+    background-color: var(--display-color);
+    color: var(--display-text-color);
     padding: 1rem;
     border-radius: 10px;
     font-size: 3rem;
@@ -72,4 +71,7 @@ main{
     place-items: center;
 }
 
-
+#keyboard button{
+    background-color: var(--buttons-color);
+    color: var(--buttons-text-color);
+}

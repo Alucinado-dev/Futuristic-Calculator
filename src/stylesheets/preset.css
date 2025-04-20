@@ -12,7 +12,10 @@
 
 
 
+:root{
+    --calculator-color: #C0C0C0;
 
+}
 
 
 body{
@@ -20,8 +23,8 @@ body{
     height: 100vh;
     display: flex;
     flex-direction: column;
+    gap: 4rem;
     place-items: center;
-    gap: 5rem;
     padding: 2rem 6rem;
     background-image: var(--bg-image);
     background-size: cover;
@@ -29,17 +32,19 @@ body{
     background-repeat: no-repeat;
     background-attachment: fixed;
 
-    backdrop-filter: brightness(0.5);
+    backdrop-filter: brightness(0.35);
 
 }
 
 h1{
-    font-size: 4rem;
+    font-size: 8rem;
     font-weight: 900;
     text-align: center;
+    backdrop-filter: brightness(0.15) blur(10px);
+    text-transform: uppercase;
     font-family: var(--title-font);
-    color: var(--primary-color);
-    text-shadow: 0 0 10px var(--secondary-color);
+    color: var(--title-color);
+    text-shadow: 0 0 5px var(--title-color);
 }
 
 aside{
@@ -53,8 +58,7 @@ aside{
 button{
     /* make it look exactly like a real button of a calculator in real life  */
     border: none;
-    background-color: rgba(255, 255, 255, 0.9);
-    color: var(--secondary-color);
+    color: var(--page-buttons-text);
     font-size: 2rem;
     font-weight: 900;
     font-family: var(--buttons-font);
@@ -77,9 +81,13 @@ dialog{
 /* ~~~~~~~~~~~~~~~~~~~~~~~~           TEMAS          ~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 [data-theme='cyberpunk'] {
-    --main-color: #E100FF;
-    --primary-color: #00F0FF;
-    --secondary-color: #FF2A6D;
+    --title-color: #00E5FF;
+    --display-color: #00CED1;
+    --display-text-color: #000000;
+    --buttons-color: #F8F8FF;
+    --buttons-text-color:#FF00FF;
+    --page-buttons:  #FF2A6D;
+    --page-buttons-text: #F8F8FF;
 
     --bg-image: url('/src/imgs/cyberpunk-bg.gif');
 
@@ -90,9 +98,13 @@ dialog{
 
 
 [data-theme='lofi'] {
-    --main-color: #B87333;
-    --primary-color: #5E2C04;
-    --secondary-color: #6B8E23;
+    --title-color: #F6A756;
+    --display-color: #2E1E25;
+    --display-text-color: #F9E4B7;
+    --buttons-color: #3C2B39;
+    --buttons-text-color:#E4C2F2;
+    --page-buttons:  #493B4F;
+    --page-buttons-text: #FFDCA8;
 
     --bg-image: url('/src/imgs/lofi-bg.gif');
 
@@ -101,9 +113,13 @@ dialog{
 }
 
 [data-theme='fall'] {
-    --main-color: #A1FF0A;
-    --primary-color: #8A2BE2;
-    --secondary-color: #000000;
+    --title-color: #B94EFF;
+    --display-color: #311F2C;
+    --display-text-color: #FFACAC;
+    --buttons-color: #FAE2C8;
+    --buttons-text-color:#6C1D45;
+    --page-buttons:  #FF764E;
+    --page-buttons-text: #2F1B17;
 
     --bg-image: url('/src/imgs/fall-bg.gif');
 
@@ -112,9 +128,13 @@ dialog{
 }
 
 [data-theme='harbor'] {
-    --main-color: #FFD700;
-    --primary-color: #8B0000;
-    --secondary-color: #4682B4;
+    --title-color: #82f1d9;
+    --display-color: #D1EFFF;
+    --display-text-color: #1F3A93;
+    --buttons-color: #FCEFD1;
+    --buttons-text-color:#5B3C11;
+    --page-buttons: #183D3D ;
+    --page-buttons-text: #A5D8C2;
 
     --bg-image: url('/src/imgs/harbor-bg.gif');
 
@@ -123,9 +143,13 @@ dialog{
 }
 
 [data-theme='balcony'] {
-    --main-color: #98FF98;
-    --primary-color: #40E0D0;
-    --secondary-color: #FFDE7D;
+    --title-color: #A3F2F2;
+    --display-color: #131F20;
+    --display-text-color: #8CFFE7;
+    --buttons-color: #2F3E3E;
+    --buttons-text-color:#FFEFD4;
+    --page-buttons: #6AE1C1 ;
+    --page-buttons-text: #103932;
 
     --bg-image: url('/src/imgs/balcony-bg.gif');
 
@@ -134,9 +158,13 @@ dialog{
 }
 
 [data-theme='rain'] {
-    --main-color: #C0C0C0;
-    --primary-color: #0077FF;
-    --secondary-color: #000000;
+    --title-color: 	#BFD9E5;
+    --display-color: #32547B;
+    --display-text-color: #1D1F25;
+    --buttons-color: #DCE2DD;
+    --buttons-text-color:#38423F;
+    --page-buttons: #92A48F ;
+    --page-buttons-text: #1F2E28;
 
     --bg-image: url('/src/imgs/rain-bg.gif');
 
@@ -145,9 +173,13 @@ dialog{
 }
 
 [data-theme='sakura'] {
-    --main-color: #FFB6C1;
-    --primary-color: #FF69B4;
-    --secondary-color: #8B008B;
+    --title-color: 	#DE5DA8;
+    --display-color: #FF87B2;
+    --display-text-color: #1C0B1E;
+    --buttons-color: #FFE5F0;
+    --buttons-text-color:#6E257E;
+    --page-buttons:  #FFD3E1;
+    --page-buttons-text: #73196D ;
 
     --bg-image: url('/src/imgs/sakura-bg.gif');
 
