@@ -91,9 +91,10 @@ dialog{
 
     --bg-image: url('/src/imgs/cyberpunk-bg.gif');
 
-    --title-font: 'Oxanium', sans-serif;
-    --display-font: 'Orbitron', sans-serif;
-    --buttons-font: 'Rajdhani', sans-serif;
+    --title-font: "Press Start 2P", system-ui;
+    --display-font: "VT323", monospace;
+    --buttons-font: "Michroma", sans-serif;
+    --page-font: "Chakra Petch", sans-serif;
 }
 
 
@@ -108,8 +109,12 @@ dialog{
 
     --bg-image: url('/src/imgs/lofi-bg.gif');
 
-    --display-font: 'Blackletter', sans-serif;
-    --buttons-font: 'Cinzel', sans-serif;
+    --title-font: "Zen Tokyo Zoo", system-ui;
+    --display-font: "IBM Plex Mono", monospace;
+    --buttons-font: "Quicksand", sans-serif;
+    --page-font: "Titillium Web", sans-serif;
+
+
 }
 
 [data-theme='fall'] {
@@ -123,8 +128,10 @@ dialog{
 
     --bg-image: url('/src/imgs/fall-bg.gif');
 
-    --display-font: 'Courier New', Courier, monospace;
-    --buttons-font: 'Rajdhani', sans-serif;
+    --title-font: "Unica One", sans-serif;
+    --display-font: "Major Mono Display", monospace;
+    --buttons-font: "Cairo", sans-serif;
+    --page-font: "Bebas Neue", sans-serif;
 }
 
 [data-theme='harbor'] {
@@ -138,8 +145,10 @@ dialog{
 
     --bg-image: url('/src/imgs/harbor-bg.gif');
 
-    --display-font: 'Metropolis', Courier, monospace;
-    --buttons-font: 'Times New Roman', sans-serif;
+    --title-font: "Coustard", serif;
+    --display-font: "Space Mono", monospace;
+    --buttons-font: "Karla", sans-serif;
+    --page-font: "Cabin", sans-serif;
 }
 
 [data-theme='balcony'] {
@@ -153,8 +162,10 @@ dialog{
 
     --bg-image: url('/src/imgs/balcony-bg.gif');
 
-    --display-font: 'Montserrat', Courier, monospace;
-    --buttons-font: 'Quicksand', sans-serif;
+    --title-font: "Orbitron", sans-serif;
+    --display-font: "Share Tech Mono", monospace;
+    --buttons-font: "Rajdhani", sans-serif;
+    --page-font: "Prompt", sans-serif;
 }
 
 [data-theme='rain'] {
@@ -168,8 +179,10 @@ dialog{
 
     --bg-image: url('/src/imgs/rain-bg.gif');
 
-    --display-font: 'Exo2', Courier, monospace;
-    --buttons-font: 'Share Tech mono', sans-serif;
+    --title-font: "Cinzel", serif;
+    --display-font: "Overpass Mono", monospace;
+    --buttons-font: "Karla", sans-serif;
+    --page-font: "Merriweather Sans", sans-serif;
 }
 
 [data-theme='sakura'] {
@@ -183,6 +196,9 @@ dialog{
 
     --bg-image: url('/src/imgs/sakura-bg.gif');
 
-    --display-font: 'Dancing Script', Courier, monospace;
-    --buttons-font: 'Pacifico', sans-serif;
+    --title-font: 'Dancing Script', Courier, cursive;
+    --display-font: "VT323", monospace;
+    --buttons-font: "Poppins", sans-serif;
+    --page-font: "Comfortaa", sans-serif;
+
 }
