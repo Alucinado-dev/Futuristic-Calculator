@@ -56,7 +56,6 @@ aside{
 }
 
 button{
-    /* make it look exactly like a real button of a calculator in real life  */
     border: none;
     color: var(--page-buttons-text);
     font-size: 2rem;
@@ -67,6 +66,7 @@ button{
     box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
     transition: all 200ms ease-in-out;
     cursor: pointer;
+    box-sizing: border-box;
 
     &:active{
         box-shadow: rgba(50, 50, 93, 0.25) 0px 10px 20px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
