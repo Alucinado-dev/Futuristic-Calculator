@@ -28,7 +28,7 @@ function storeOperand(display){
            return NaN;
         }
     } catch (error) {
-        console.log(`Erro ao fazer parsing do operando: ${error}`);
+        console.log(`Erro no parsing do operando: ${error}`);
         return NaN; 
     }
     
@@ -36,12 +36,49 @@ function storeOperand(display){
     return operand;
 }
 
-function updateDisplay(value, whichDisplay){
-    whichDisplay.innerText = value;
+function updateDisplay(value, whichDisplay) {
+    const upperThreshold = 1e9;
+    const lowerThreshold = 1e-9;
+    const precision = 6;
+    const absValue = Math.abs(value);
+    let displayValue = null;
+
+    if (typeof value === 'number' && isFinite(value)) {
+        
+        if(absValue >= upperThreshold || (absValue <= lowerThreshold && value !== 0)){
+            displayValue = value.toExponential(precision);
+            console.log(`Formatando ${value} para notação científica: ${displayValue}`);
+        }else if (Number.isInteger(value)) {
+            displayValue = value.toString();
+        } else {
+            displayValue = value.toLocaleString('pt-BR', {
+                minimumFractionDigits: 1,
+                maximumFractionDigits: 4,
+            });
+        }    
+        
+    } else {
+        if (value === Infinity) {
+            displayValue = 'Infinito';
+        } else if (value === -Infinity) {
+            displayValue = '-Infinito';
+        } else {
+            displayValue = String(value);
+        }
+    }
+
+    whichDisplay.innerText = displayValue;
 }
 
 function appendPressedButtonToTyped(buttonContent){
+    const maxInputDigits = 16;
     const typed = document.getElementById('typed');
+
+    if(typed.innerText.length >= maxInputDigits){
+        console.warn(`Limite de dígitos atingido: ${maxInputDigits}`)
+        return;
+    }
+
     typed.innerText += buttonContent;
 }
 
@@ -88,12 +125,12 @@ function numberSignalInverter(number){
 
 function insertFloatingPoint (typed) {
     try {
-        if(!typed.innerText.includes('.')){
+        if(!typed.innerText.includes(',')){
 
             if(typed.innerText === '') {
-                typed.innerText = '0.';
+                typed.innerText = '0,';
             } else {
-                typed.innerText += '.';
+                typed.innerText += ',';
             }
         }
 
