@@ -215,14 +215,23 @@ btnRoot.addEventListener('click', () => {
 
         if (isNaN(rootResult)) {
             showErrorMessage(sourceDisplay || result, 'Raiz de nº negativo'); 
-            updateDisplay(rootResult, result);
             clearElement(typed); 
             
+            calculatorState = { firstOperand: null, operator: null, secondOperand: null }; 
+            console.log("Estado resetado após erro de Raiz Quadrada.");
+        } else { 
+            updateDisplay(rootResult, result); 
+            clearElement(typed);
+        
+            createUnityForHistory(numberToRoot, 'sqrt', '', rootResult);
+            
+        
             calculatorState.firstOperand = rootResult;
             calculatorState.operator = null;
             calculatorState.secondOperand = null;
-            console.log("Estado após Raiz Quadrada:", calculatorState);
+            console.log("Estado após Raiz Quadrada bem-sucedida:", calculatorState);
         }
+
     } else if (sourceDisplay && isNaN(numberToRoot)) {
          showErrorMessage(sourceDisplay, 'Entrada inválida');
     }
