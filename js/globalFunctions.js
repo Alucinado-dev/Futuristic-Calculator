@@ -43,46 +43,39 @@ function updateDisplay(value, whichDisplay){
 function appendPressedButtonToTyped(buttonContent){
     const typed = document.getElementById('typed');
     typed.innerText += buttonContent;
-    updateDisplay(typed.innerText, typed);
 }
 
 function calculate(firstOperand, secondOperand, operator){
     let result = null;
 
+    /* verifications before the calculation */
+    if (operator === 'divide' && secondOperand === 0) {
+        console.error("Tentativa de divisão por zero.");
+        return NaN; 
+    }
+    if (operator === 'sqrt' && firstOperand < 0) {
+        console.error("Tentativa de raiz quadrada de número negativo.");
+        return NaN;
+    }
+
+    /* operations itself */
     if(operator === 'plus'){
         result = firstOperand + secondOperand;
-    }
-
-    if(operator === 'minus'){
+    } else if(operator === 'minus'){ 
         result = firstOperand - secondOperand;
-    }
-
-    if(operator === 'times'){
+    } else if(operator === 'times'){
         result = firstOperand * secondOperand;
-    }
-
-    if(operator === 'divide'){
+    } else if(operator === 'divide'){
         result = firstOperand / secondOperand;
-    }
-
-    if(operator === 'power'){
+    } else if(operator === 'power'){
         result = Math.pow(firstOperand, secondOperand);
-    }
-
-    if(operator === 'sqrt'){
+    } else if(operator === 'sqrt'){
         result = Math.sqrt(firstOperand);
-    }
-
-    if(operator === 'percent'){
+    } else if(operator === 'percent'){
         result = (firstOperand / 100) * secondOperand;
     }
 
-    if (Number.isInteger(result)) {
-        return Number(result);
-    } else{
-        return Number(result).toFixed(4);
-    }
-    
+    return result; 
 }
 
 function numberSignalInverter(number){
@@ -139,12 +132,15 @@ function backspace(typed){
     updateDisplay(typed.innerText, typed);
 }
 
-function showErrorMessage (display, errorMessage = 'Ocorreu um erro desconecido'){
-    display.innerText = `Erro: ${errorMessage}`;
+function showErrorMessage (displayElement, errorMessage = 'Erro desconecido'){
+    const originalColor = displayElement.style.color; 
+    displayElement.innerText = `Erro: ${errorMessage}`;
+    displayElement.style.color = 'red';
 
     setTimeout(() => {
-        display.innerText = '';
-    }, 2000);
+        displayElement.style.color = originalColor;
+        displayElement.innerText = '';
+    }, 2500);
 }
 
 function makeAction(typed, result, action, currentState) {
@@ -172,24 +168,32 @@ function makeAction(typed, result, action, currentState) {
         }
     
         if(action === 'enter'){
-
+            /* verifies if there is an operation to be calculated */
             if (state.firstOperand !== null && state.operator !== null && typed.innerText !== '') {
                 const secondOperandText = typed.innerText; /* stores the second operand in string type to the history */
                 state.secondOperand = storeOperand(typed); 
     
                 if (isNaN(state.secondOperand)) {
-                    showErrorMessage(result);
+                    showErrorMessage(result,'entrada inválida.');
                     return currentState; 
                 }
     
                 console.log(`Calculando: ${state.firstOperand} ${state.operator} ${state.secondOperand}`);
                 const calculationResult = calculate(state.firstOperand, state.secondOperand, state.operator);
     
-                if (!isFinite(calculationResult) || isNaN(calculationResult)) {
-                     showErrorMessage(result);
-                        state = { firstOperand: null, operator: null, secondOperand: null };
-                        clearElement(typed);
+                if (!isFinite(calculationResult) /*|| isNaN(calculationResult) - já tratado em calculate */) {
+                    let errorMsg = 'Resultado inválido';
+
+                    if (state.operator === 'divide' && state.secondOperand === 0) {
+                        errorMsg = 'Divisão por zero';
+                    }
+
+                    showErrorMessage(result, errorMsg); 
+
+                    state = { firstOperand: null, operator: null, secondOperand: null };
+                    clearElement(typed);
                 } else {
+                    /* sucess */
                     updateDisplay(calculationResult, result);
                     createUnityForHistory(state.firstOperand, state.operator, secondOperandText, calculationResult);
                     
@@ -204,12 +208,12 @@ function makeAction(typed, result, action, currentState) {
                 console.log("Enter pressionado sem operação completa pronta.");
             }
         }
+
     } catch (error) {
         console.log("Erro em makeAction:", error);
         showErrorMessage(result);
         state = { firstOperand: null, operator: null, secondOperand: null };
         clearElement(typed);
-        clearElement(result);
     }
     return state; 
 }

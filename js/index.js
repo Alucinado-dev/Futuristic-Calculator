@@ -111,7 +111,7 @@ btnOperators.forEach(button => {
             currentOperand = storeOperand(typed);
             /* if the input is not valid, show error and stop the action of this click */
             if (isNaN(currentOperand)) {
-                showErrorMessage(result);
+                showErrorMessage(result, 'entrada inválida.');
                 clearElement(typed); 
                 return; 
             }
@@ -127,8 +127,8 @@ btnOperators.forEach(button => {
             /* calling the create unity for history  here to contemplate the case when the operations are chained */
             createUnityForHistory(calculatorState.firstOperand, calculatorState.operator, currentOperand, intermediateResult);
 
-            if (!isFinite(intermediateResult) || isNaN(intermediateResult)) {
-                showErrorMessage(result, 'o resultado da operação é inválido.');
+            if (!isFinite(intermediateResult)) {
+                showErrorMessage(result, 'Resultado Inválido.');
                 calculatorState = { firstOperand: null, secondOperand: null, operator: null };
                 clearElement(typed);
                 clearElement(result);
@@ -143,14 +143,13 @@ btnOperators.forEach(button => {
             }
         }
 
-        /* Case 2: first operator pressed, or change in the operator after first operand */ 
+        /* Case 2: first operator pressed after a number */ 
         /* requires a valid number*/
 
         else if (currentOperand !== null) {
             calculatorState.firstOperand = currentOperand;
             calculatorState.operator = currentOperator;
             clearElement(typed); 
-            updateDisplay(calculatorState.firstOperand, result);
             console.log(`Primeiro operando armazenado: ${calculatorState.firstOperand}, Operador definido: ${calculatorState.operator}`);
         }
 
@@ -158,17 +157,15 @@ btnOperators.forEach(button => {
         /* requires a valid firstOperand */
 
         else if (calculatorState.firstOperand !== null) {
-             calculatorState.operator = currentOperator; 
-             console.log(`Operador alterado para: ${calculatorState.operator}`);
-             
-             updateDisplay(calculatorState.firstOperand, result);
+            calculatorState.operator = currentOperator; 
+            console.log(`Operador alterado para: ${calculatorState.operator}`);     
         }
         
         /* last case:  operator pressed with no firstOperand */
 
         else {
             console.log("Operador pressionado sem um número precedente válido.");
-            showErrorMessage(result, 'digite um número antes de selecionar um operador');
+            showErrorMessage(typed, 'digite um número primeiro');
         }
 
         console.log("Estado após operador:", calculatorState);
@@ -196,15 +193,42 @@ btnInvert.addEventListener('click', () => {
     }
 });   
 
+
 btnRoot.addEventListener('click', () => {
-    if(typed.innerText !== ''){
-        const currentNumber = storeOperand(typed);
-        const root = calculate(currentNumber, null, 'sqrt');
-        if(isNaN(root)){
-            showErrorMessage(result, 'não é possível calcular a raiz de um número negativo');
-        } else {
-            updateDisplay(root, typed);
+    let numberToRoot = null;
+    let sourceDisplay = null; 
+
+    
+    if (typed.innerText !== '') {
+        numberToRoot = storeOperand(typed);
+        sourceDisplay = typed;
+    }
+
+    /* uses the number in result only if there is no number in typed */
+    else if (result.innerText !== '' && calculatorState.operator === null) {
+        numberToRoot = storeOperand(result); 
+        sourceDisplay = result; /* just to know that the value came from result */
+    }
+
+    if (numberToRoot !== null && !isNaN(numberToRoot)) {
+        const rootResult = calculate(numberToRoot, null, 'sqrt'); 
+
+        if (isNaN(rootResult)) {
+            showErrorMessage(sourceDisplay || result, 'Raiz de nº negativo'); 
+            updateDisplay(rootResult, result);
+            clearElement(typed); 
+            
+            calculatorState.firstOperand = rootResult;
+            calculatorState.operator = null;
+            calculatorState.secondOperand = null;
+            console.log("Estado após Raiz Quadrada:", calculatorState);
         }
+    } else if (sourceDisplay && isNaN(numberToRoot)) {
+         showErrorMessage(sourceDisplay, 'Entrada inválida');
+    }
+     else {
+        console.log("Botão Raiz pressionado sem número válido em 'typed' ou 'result'.");
+        showErrorMessage(typed, "Digite um número");
     }
 });
 
