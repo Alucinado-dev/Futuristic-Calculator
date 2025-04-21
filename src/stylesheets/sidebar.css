@@ -5,7 +5,6 @@
     left: 0;
     top: 0;
     padding: 2rem;
-
 }
 
 #sidebar-theme #btn-box-themes{
@@ -19,11 +18,15 @@
 
 #sidebar-theme #box-themes{
     background-color: rgba(0, 0, 0, 0.8);
-    padding: 2rem;
+    padding: 2rem 0;
     position: relative;
+    transform: translateX(-120%);
+    transition: all 500ms ease-in-out;
+    opacity: 0;
 
     &.active{
-        display: block;
+        transform: translateX(0);
+        opacity: 1;
     }
 }
 
@@ -35,14 +38,24 @@
     gap: 2rem;
 }
 
-#sidebar-theme #box-themes #themes-list button{
-    width: 100%;
+#sidebar-theme #box-themes #themes-list .btn-theme{
+    width: 100px;
     height: 5rem;
     font-size: 1.6rem;
+    font-family: "Cinzel", serif;
     font-weight: 900;
     background-color: transparent;
     color: white;
     border: 2px solid white;
+
+    &.active{
+        transform: scale(1.2);
+        color: var(--title-color);
+        border: 2px solid;
+        border-image: linear-gradient(to right, var(--page-buttons) 0%, var(--display-color) 100%);
+        border-image-slice: 1;
+    
+    }
 }
 
 
@@ -54,9 +67,13 @@
     right: 0;
     top: 0;
     padding: 2rem;
+    display: flex;
 }
 
 #sidebar-history #btn-box-history{
+    max-width: 150px;
+    max-height: 50px;
+    align-self: flex-end;
     background-color: var(--page-buttons);
     box-shadow: 0 0 3px var(--page-buttons);
     
@@ -69,9 +86,16 @@
     background-color: rgba(0, 0, 0, 0.8);
     padding: 2rem;
     position: relative;
-    display: none;
     overflow: auto;
     max-height: 70vh;
+    transform: translateX(-120%);
+    transition: all 500ms ease-in-out;
+    opacity: 0;
+
+    &.active{
+        transform: translateX(0);
+        opacity: 1;
+    }
 
     &::-webkit-scrollbar{
         width: 10px;
@@ -83,15 +107,13 @@
     }
 
     &::-webkit-scrollbar-thumb{
-        background-color: var(--main-color);
+        background: linear-gradient(0deg, var(--display-color) 0%, var(--title-color) 100%);
 
         border-radius: 10px;
     }
     
 
-    &.active{
-        display: block;
-    }
+
 }
 
 #sidebar-history #box-history #history-list{
@@ -108,9 +130,11 @@
     background-color: rgba(255, 255, 255, 0.4);
     padding: 1rem;
     border-radius: 1rem;
+    max-width: 232px;
 }
 
 #sidebar-history #box-history #history-list .history-element{
     font-size: 1.2rem;
-
+    font-family: "Michroma", sans-serif;
+    font-weight: 900;
 }

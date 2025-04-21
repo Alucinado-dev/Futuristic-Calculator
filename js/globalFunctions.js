@@ -117,6 +117,7 @@ function createUnityForHistory(first, op, second, resultValue){
         power: '^', sqrt: '√', percent: '%'
     }
     unity.innerText = `${first} ${opSymbol[op]} ${second} = ${resultValue}`;
+    unity.classList.add('history-element');
     appendUnityToHistory(unity);   
 }
 

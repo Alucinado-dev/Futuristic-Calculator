@@ -1,17 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 :root{
     --calculator-color: #C0C0C0;
 
@@ -74,9 +60,7 @@ button{
     
 }
 
-dialog{
-    display: none;
-}
+
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~           TEMAS          ~~~~~~~~~~~~~~~~~~~~~~~~ */
 
