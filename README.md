@@ -135,7 +135,7 @@ This project is licensed under the MIT License. See the `LICENSE` file for more 
         gap: 1rem;
         font-size: 1.6rem;
         color: #bacfdd;
-        font-family: "Share Tech Mono", monospace'>
+        font-family: "Share Tech Mono", monospace;'>
         <p style= '
             font-weight: 600;
             display: flex;
@@ -148,16 +148,16 @@ This project is licensed under the MIT License. See the `LICENSE` file for more 
         style= '
             font-weight: 900;
             transition: all 200ms ease-in-out;
-            color: var(--text-color-footer);
+            color: #bacfdd;
             &::before{
                 content: "</ALUCINADO>";
             }
             &:hover, &:focus{
-                font-family: var(--tech);
-                background-image: linear-gradient(180deg,var(--logo1) 30%,  var(--logo2) 70%);
+                font-family: "Share Tech Mono", monospace;
+                background-image: linear-gradient(180deg, #FF00FF 30%,  #00FFFF 70%);
                 background-clip: text;
                 color: transparent;
-                text-shadow: 0px 0px 10px var(--logo3);
+                text-shadow: 0px 0px 10px #0600ab;
             }'></a>                
         <img src="src/assets/ALucin4do-logo.png" alt="logo of ALucin4do" style='
             width: 35px;
