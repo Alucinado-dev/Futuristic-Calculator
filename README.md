@@ -112,15 +112,12 @@ You can also simply open an [Issue](https://github.com/Alucinado-dev/Futuristic-
 
 This project is licensed under the MIT License. See the `LICENSE` file for more details [License](/LICENSE).
 
-## 😀 About the Author
-
-[Contact Me](https://www.linkedin.com/in/lucino-de-campos/).
+## 😀 [Portifolio](https://alucinado-dev.vercel.app).
 
 
-[Portifolio](https://alucinado-dev.vercel.app).
 ---
 
-<footer style='    
+<div style='    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -165,6 +162,6 @@ This project is licensed under the MIT License. See the `LICENSE` file for more 
             width: 35px;
             height: 35px;'>
     </div>
-</footer>
+</div>
 
 
