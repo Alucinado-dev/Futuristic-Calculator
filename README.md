@@ -1,7 +1,5 @@
 # Calculator 🔢
 
-![License Badge](https://img.shields.io/badge/license-MIT-blue.svg) 
-
 An interactive and stylish web calculator, developed with HTML, CSS, and pure JavaScript (Vanilla JS). It features basic and advanced functionalities, calculation history, and multiple selectable visual themes to customize the user experience.
 
 ## ✨ Implemented Features
@@ -108,60 +106,47 @@ Contributions are welcome! If you have suggestions for improving this project, p
 
 You can also simply open an [Issue](https://github.com/Alucinado-dev/Futuristic-Calculator/issues) with the tag "enhancement" or "bug".
 
+
+## 📁 Folders
+
+calculator/
+├─ js/
+│  ├─ globalFunctions.js
+│  └─ index.js
+├─ src/
+│  ├─ assets/
+│  │  ├─ ALucin4do-logo.png
+│  │  └─ calculator-favicon.png
+│  ├─ imgs/
+│  │  ├─ screenshots/
+│  │  │  ├─ calculator-screenshot-2.png
+│  │  │  └─ calculator-screenshot.png
+│  │  ├─ balcony-bg.gif
+│  │  ├─ cyberpunk-bg.gif
+│  │  ├─ fall-bg.gif
+│  │  ├─ harbor-bg.gif
+│  │  ├─ lofi-bg.gif
+│  │  ├─ rain-bg.gif
+│  │  └─ sakura-bg.gif
+│  └─ stylesheets/
+│     ├─ footer.css
+│     ├─ main.css
+│     ├─ preset.css
+│     ├─ reset.css
+│     ├─ responsive.css
+│     └─ sidebar.css
+├─ index.html
+├─ LICENSE
+└─ README.md
+
+
 ## 📄 License 
 
 This project is licensed under the MIT License. See the `LICENSE` file for more details [License](/LICENSE).
 
-## 😀 [Portifolio](https://alucinado-dev.vercel.app).
+##   [My Portifolio](https://alucinado-dev.vercel.app).  <img src="src/assets/ALucin4do-logo.png" alt="logo of ALucin4do" style='width: 35px; height: 35px;'>
+            
 
 
----
-
-<div style='    
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem;
-    margin: auto;
-    position: absolute;
-    bottom: 0;
-    box-sizing: border-box;
-    width: 100%;'>
-    <div style='
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 1rem;
-        font-size: 1.6rem;
-        color: #bacfdd;
-        font-family: "Share Tech Mono", monospace;'>
-        <p style= '
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            justify-content: center;'> 
-            Developed with 💜 by 
-        </p>
-        <a href="https://alucinado-dev.vercel.app" target="_blank" rel="noopener noreferrer"
-        style= '
-            font-weight: 900;
-            transition: all 200ms ease-in-out;
-            color: #bacfdd;
-            &::before{
-                content: "</ALUCINADO>";
-            }
-            &:hover, &:focus{
-                font-family: "Share Tech Mono", monospace;
-                background-image: linear-gradient(180deg, #FF00FF 30%,  #00FFFF 70%);
-                background-clip: text;
-                color: transparent;
-                text-shadow: 0px 0px 10px #0600ab;
-            }'></a>                
-        <img src="src/assets/ALucin4do-logo.png" alt="logo of ALucin4do" style='
-            width: 35px;
-            height: 35px;'>
-    </div>
-</div>
 
 
