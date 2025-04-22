@@ -1,10 +1,11 @@
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~   	    Themes    	    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 #sidebar-theme{
-    position: absolute;
     left: 0;
     top: 0;
     padding: 2rem;
+    height: auto;
+    gap: 2rem;
 }
 
 #sidebar-theme #btn-box-themes{
@@ -63,7 +64,6 @@
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~   	    History    	    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 #sidebar-history{
-    position: absolute;
     right: 0;
     top: 0;
     padding: 2rem;
