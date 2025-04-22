@@ -112,10 +112,12 @@ You can also simply open an [Issue](https://github.com/Alucinado-dev/Futuristic-
 
 This project is licensed under the MIT License. See the `LICENSE` file for more details [License](/LICENSE).
 
-##😀 About the Author
+## 😀 About the Author
 
-[Contact Me](https://www.linkedin.com/in/lucino-de-campos/)
-[Portifolio](https://alucinado-dev.vercel.app)
+[Contact Me](https://www.linkedin.com/in/lucino-de-campos/).
+
+
+[Portifolio](https://alucinado-dev.vercel.app).
 ---
 
 <footer style='    
